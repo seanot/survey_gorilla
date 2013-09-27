@@ -1,0 +1,18 @@
+<div id="container">
+
+  <h3>Review Your New Survey</h3>
+
+  <div id="question">
+    <h4><%= @survey.name %></h4>
+    <p><%= @survey.questions.first.question %></p>
+    <form action="/survey/:survey_id/results" method="POST">
+      <% @question.choices.each do |choice| %>
+        <input type="radio" name="choice_1" value="choice_1"><%= choice.choice %><br>
+      <% end %>
+    </form>
+  </div>
+
+  <p>Survey URL: <a href="/survey/<%= @survey.id %>">/survey/<%= @survey.id %></a></p>
+  <p>APPROVED<a href="/survey/<%= @survey.id %>"></a></p>
+
+</div>
