@@ -26,15 +26,11 @@ post '/register' do
 end
 
 post '/login' do
-  begin
-    email = params[:email]
-    password = params[:password]
-    @user = User.authenticate(email, password)
-    session[:user_id] = @user.id
-    
-    redirect "/profile/#{@user.id}"
-  rescue
-    @error = "Error! User login failed. Please try again."
-    erb :index
-  end
+  email = params[:email]
+  password = params[:password]
+  @user = User.authentication(email, password)
+  session[:user_id] = @user.id
+  
+  redirect "/profile/#{@user.id}"
+
 end
