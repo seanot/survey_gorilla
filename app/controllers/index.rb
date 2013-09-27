@@ -11,6 +11,10 @@ get '/register' do
   erb :register_new_user
 end
 
+get '/profile/:id' do
+  
+end
+
 
 
 #=============POST=============
