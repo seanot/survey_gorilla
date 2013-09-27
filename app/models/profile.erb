@@ -1,0 +1,33 @@
+<div class="container">
+
+  <h1><%= @user.name %>'s Profile</h1>
+
+  <form name="create" action="/create" method="POST">
+  <input type="submit" value="Create A New Survey">
+  </form>
+
+  <h3>Your Surveys</h3>
+  <div class="created-survey-listing">
+    <table>
+    <% @user.authored_surveys.each do |survey| %>
+      <tr>
+        <th>
+          Survey Name
+        </th>
+        <th>
+          URL
+        </th> 
+      </tr> 
+      <tr> 
+        <td>
+          <a href="/survey/<%= survey.id %>/results"></a>
+        </td>
+        <td>
+          <a href="/survey/<%= survey.id %>/results"><%= localhost:9393/survey/<%= survey.id %>/results %></a>
+        <td>
+      </tr>  
+   <% end %>
+  </table>
+</div>
+
+
