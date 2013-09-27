@@ -1,0 +1,19 @@
+<div id="container">
+
+<h3>Create New Survey</h3>
+
+<form action="/review" method="POST">
+  <label>Survey Name:<br>
+    <input tabindex="1" type="text" required name="survey_name" value="enter survey name"></input></label><br>
+  <label>Survey Question:<br>
+    <input tabindex="2" type="text" required name="survey_question" value="enter survey question"></input></label><br>
+  <label>Response Choices:<br>
+    <input tabindex="3" type="text" required name="survey_choice_1" value="choice 1"></input><br>
+    <input tabindex="4" type="text" required name="survey_choice_2" value="choice 2"></input><br>
+    <input tabindex="5" type="text" required name="survey_choice_3" value="choice 3"></input><br>
+  </label><br>
+  <input tabindex="6" type="submit" value="Create Your Survey!"><br>
+</form>
+<a href="/profile/<%= @user.id %>"><button>Cancel</button></a>
+
+</div>
