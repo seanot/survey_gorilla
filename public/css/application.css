@@ -67,3 +67,11 @@ ul {
 .create {
   text-align: center;
 }
+
+.photo {
+  width: 100px;
+  height: auto;
+  position: absolute;
+  top: 80px;
+  right: 150px;
+}

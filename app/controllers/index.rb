@@ -36,11 +36,18 @@ end
 get '/profile/:id' do
   @user = User.find(params[:id])
   puts @user.authored_surveys
+  @photo = Photo.find_by(user_id: @user.id)
   erb :profile
 end
 
 
 #=============POST=============
+
+post '/profile/:id/upload' do
+  @user = current_user
+  @photo = Photo.create(file: params[:image], user_id: @user.id)
+  redirect "/profile/#{@user.id}"
+end
 
 post '/review' do
   @user = current_user
