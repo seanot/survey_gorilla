@@ -44,18 +44,28 @@ end
 
 post '/review' do
   @user = current_user
-  survey = Survey.create(name: params[:survey_name], user_id: @user.id)
+  @survey = Survey.find_or_create_by_name(params[:survey_name])
+  @survey.update_attributes(user_id: @user.id)
+  @survey.save
   question = Question.create(question: params[:survey_question])
   question.choices << Choice.create(choice: params[:survey_choice_1])
   question.choices << Choice.create(choice: params[:survey_choice_2])
   question.choices << Choice.create(choice: params[:survey_choice_3])
-  survey.questions << question
-  redirect "/review/#{survey.id}"
+  @survey.questions << question
+  puts params[:add]
+  puts params[:submit]
+  if params[:add]
+    erb :create
+  else
+    redirect "/review/#{@survey.id}"
+  end
 end
 
 post '/survey/:survey_id/results' do
   @survey = Survey.find(params[:survey_id])
-  response = Response.create(choice_id: params[:choice_id])
+  @survey.questions.each do |question|
+    Response.create(choice_id: params[:"#{question.id}"].to_i)
+  end
   redirect to ("/survey/#{@survey.id}/results")
 end
 
