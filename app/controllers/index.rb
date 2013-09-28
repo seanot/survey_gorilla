@@ -74,9 +74,10 @@ post '/login' do
   @user = User.authentication(email, password)
   if @user
     session[:user_id] = @user.id
+    redirect ""
   else
     @error = "email or password invalid"
+    redirect "/"
   end
-  redirect ""
 end
 
