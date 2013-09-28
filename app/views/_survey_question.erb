@@ -6,7 +6,7 @@
 
   <form action="/survey/:survey_id/results" method="POST">
     <% @question.choices.each do |choice| %>
-      <input type="radio" name="choice_1" value="choice_1"><%= choice.choice %><br>
+      <input type="radio" name="choice_1" value="choice_1"> <%= choice.choice %><br>
     <% end %>
     <% if session %>
       <input type="submit" value="Submit your response">

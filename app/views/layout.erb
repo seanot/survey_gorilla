@@ -21,7 +21,7 @@
     <div class="login">
     <% if session[:user_id] %>
       <div class="user_info">
-        <a id="login" href="/"><%= current_user.email %></a>
+        <a id="login" href="/profile/<%= session[:user_id] %>"><%= current_user.email %></a>
         <form action="/logout" method="get">
           <input id="logout" type="submit" value="Logout">
         </form>
@@ -29,9 +29,9 @@
     <% else %>
       <form action="/login" method="POST">
         Email
-        <input type="text" name="email">
+        <input required type="text" name="email" placeholder="enter email address">
         Password
-        <input type="password" name="password">
+        <input required type="password" name="password" placeholder="enter password">
         <input type="submit"value="Login">
       </form>
       <form action="/register" method="get">

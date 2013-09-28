@@ -1,4 +1,6 @@
-<div id="container">
+<% if @error %>
+  <p><%= @error %></p>
+<% end %>
 
   <% if !session[:user_id] %>
     <p>In order to participate in this survey, you must be logged into your account.  Please login or create a new account.</p>
