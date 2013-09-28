@@ -2,33 +2,70 @@
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <script src="/js/graph.js"></script>
 
-  <%= @survey.name %> Survey
 
-  <%= @survey.survey_takers.count %> Responses
 
 <div class="question-review">
   <table>
   <% @survey.questions.each do |q| %>
-    <tr> 
-      <td>
-      <%= q.question %>
-      <td>
-    </tr>  
     <tr>
-      <% q.choices.each do |c| %> 
+      <% q.choices.each do |c| %>
       <td>
-        <%= c.choice %> 
+        <%= c.choice %>
       </td>
-      <td>  
-        <%= c.responses.where(c.id == response.choice_id).count %> 
-      <td>  
+      <td>
+        <%= c.responses.where(choice_id: c.id).count %>
+      <td>
       <% end %>
-      
+
       <div id="question-response" style="min-width: 410px; height: 500px; margin: 0 auto"></div>
       <% end %>
 </table>
 </div>
 
+     <% @question = Question.first %>
+  <script>
 
-  
- 
+  $(function () {
+    $('#question-response').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: '<%= @question.question %>'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            data: [
+                <% @question.choices.each do |c| %>
+                ['<%=c.choice%>',   <%= c.responses.where(choice_id: c.id).count %> ],
+               <%end%>
+            ]
+        }]
+    });
+});
+
+    </script>
+
+
+
+
+
+
