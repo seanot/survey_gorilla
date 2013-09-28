@@ -1,6 +1,6 @@
 <div id="container">
 
-  <% unless session.id %>
+  <% if !session[:user_id] %>
     <p>In order to participate in this survey, you must be logged into your account.  Please login or create a new account.</p>
   <% end %>
 
@@ -10,11 +10,11 @@
     
     <p><%= @survey.questions.first.question %></p>
 
-    <form action="/survey/:survey_id/results" method="POST">
-      <% @question.choices.each do |choice| %>
-        <input type="radio" name="choice_1" value="choice_1"><%= choice.choice %><br>
+    <form action="/survey/<%= @survey.id %>/results" method="POST">
+      <% @survey.questions.first.choices.each do |choice| %>
+        <input type="radio" name="choice" value="<%= choice.choice%>"><%= choice.choice %><br>
       <% end %>
-      <% if session %>
+      <% if session[:user_id] %>
         <input type="submit" value="Submit your response">
       <% end %>
       <a href="/"><button>Cancel</button></a>

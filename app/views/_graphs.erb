@@ -1,0 +1,44 @@
+     <% @survey.questions.each do |q| %>
+  <script>
+
+  $(function () {
+    $('#question-response').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: <%= q.question %>
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            data: [
+                <% q.choices.each do |c| %> 
+                [<%=c.choice%>,   <%= c.responses.count %> ],
+               <%end%>
+            ]
+        }]
+    });
+});
+
+    </script>
+      <% end %>
+
+
