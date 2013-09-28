@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   has_many :participations
   has_many :taken_surveys, through: :participations, source: :survey
 
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true
+
 
   include BCrypt
 

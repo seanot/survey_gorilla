@@ -1,4 +1,10 @@
-<div id="container">
+<% if @error %>
+  <p><%= @error %></p>
+<% end %>
+
+<% if !@user %>
+  <p>Please login or create your Monkey SCATT account above.</p>
+<% end %>
 
 <h3>Create New Survey</h3>
 
@@ -12,8 +18,8 @@
     <input tabindex="4" type="text" required name="survey_choice_2" placeholder="choice 2"></input><br>
     <input tabindex="5" type="text" required name="survey_choice_3" placeholder="choice 3"></input><br>
   </label><br>
-  <input tabindex="6" type="submit" value="Create Your Survey!"><br>
+  <% if @user %>
+    <input tabindex="6" type="submit" value="Create Your Survey!"><br>
+  <% end %>
 </form>
-<a href="/profile/<%= @user.id %>"><button>Cancel</button></a>
-
-</div>
+<a href="/"><button>Cancel</button></a>

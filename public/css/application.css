@@ -35,6 +35,34 @@ ul {
   right: 10px;
 }
 
-.smile {
-  width: 100%;
+.upper {
+  display: inline;
+}
+
+.user_info a {
+  line-height: 100%;
+}
+
+#welcome {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+#scatt {
+  margin-top: 0;
+  text-align: center;
+}
+
+#scatt span {
+  text-decoration: underline;
+}
+
+#smile {
+  display: block;
+  margin: 0 auto;
+  width: 75%;
+}
+
+.create {
+  text-align: center;
 }

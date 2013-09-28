@@ -1,9 +1,12 @@
-<div id="container">
+<% if @error %>
+  <p><%= @error %></p>
+<% end %>
 
-<h1>Welcome to Survey Creating and Taking Thingy!!</h1>
+<h1 id="welcome">Welcome to Monkey S.C.A.T.T.</h1><br>
+<h1 id="scatt">The Online <span>S</span>urvey <span>C</span>reating <span>a</span>nd <span>T</span>aking <span>T</span>hingy!!</h1>
 
-<p><img class="smile" src="Smiley-face.jpg"></p>
-<p>Need to create a new survey?</p>
-<a href="/create"><button id="create">Create New Survey</button></a>
-
+<div class="create">
+  <p id="new">Need to create a new survey? Click below to get started!</p>
+  <a href="/create"><img id="smile" src="Smiley-face.jpg">Click Me!</a>
 </div>
+

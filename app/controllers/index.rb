@@ -3,7 +3,9 @@ get '/' do
 end
 
 get '/create' do
-  @user = current_user
+  if current_user
+    @user = current_user
+  end
   erb :create
 end
 
@@ -32,7 +34,8 @@ get '/survey/:id/results' do
 end
 
 get '/profile/:id' do
-  
+  @user = current_user
+  erb :profile
 end
 
 
@@ -62,7 +65,6 @@ post '/register' do
   if @user.save
     session[:user_id] = @user.id
   end
-  
   redirect "/"
 end
 
@@ -70,7 +72,10 @@ post '/login' do
   email = params[:email]
   password = params[:password]
   @user = User.authentication(email, password)
-  session[:user_id] = @user.id
-  
-  redirect "/profile/#{@user.id}"
+  if @user
+    session[:user_id] = @user.id
+  else
+    @error = "email or password invalid"
+  end
+  redirect ""
 end
