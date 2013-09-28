@@ -19,7 +19,7 @@ get '/register' do
 end
 
 get '/review/:id' do
-  @survey = Survey.find(params[:id])  
+  @survey = Survey.find(params[:id])
   erb :review
 end
 
@@ -54,8 +54,7 @@ end
 
 post '/survey/:survey_id/results' do
   @survey = Survey.find(params[:survey_id])
-  response = Response.create(response: params[:choice])
-  @survey.questions.first.choices.first.responses << response
+  response = Response.create(choice_id: params[:choice_id])
   redirect to ("/survey/#{@survey.id}/results")
 end
 

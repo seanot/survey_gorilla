@@ -7,19 +7,21 @@
   <% end %>
 
   <div id="question">
-    
+
     <h4><%= @survey.name %></h4>
-    
+
     <p><%= @survey.questions.first.question %></p>
 
     <form action="/survey/<%= @survey.id %>/results" method="POST">
       <% @survey.questions.first.choices.each do |choice| %>
-        <input type="radio" name="choice" value="<%= choice.choice%>"> <%= choice.choice %><br>
+        <input type="radio" name="choice_id" value="<%= choice.id%>"><%= choice.choice %><br>
       <% end %>
       <% if session[:user_id] %>
         <input type="submit" value="Submit your response">
       <% end %>
       <a href="/"><button>Cancel</button></a>
     </form>
-    
+
   </div>
+
+</div>
