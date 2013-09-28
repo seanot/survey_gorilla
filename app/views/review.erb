@@ -6,11 +6,15 @@
 
   <div id="question">
     <h4><%= @survey.name %></h4>
-    <p><%= @survey.questions.first.question %></p>
-    <form action="/survey/:survey_id/results" method="POST">
-      <% @survey.questions.first.choices.each do |choice| %>
+    <% questions_array = @survey.questions %>
+    <%= questions_array.first.question%>
+  <p><% questions_array.each do |question| %>
+    <%= question.question %></p>
+ <form action="/survey/:survey_id/results" method="POST">
+      <% question.choices.each do |choice| %>
         <input type="radio" name="choice_1" value="choice_1"><%= choice.choice %><br>
       <% end %>
+    <%end%>
     </form>
   </div>
 

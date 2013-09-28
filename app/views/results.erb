@@ -22,9 +22,10 @@
 </table>
 </div>
 
-     <% @question = Question.first %>
-  <script>
 
+
+  <script>
+  <% @question = @survey.questions.each |question| %>
   $(function () {
     $('#question-response').highcharts({
         chart: {
@@ -33,7 +34,7 @@
             plotShadow: false
         },
         title: {
-            text: '<%= @question.question %>'
+            text: '<%= question.question %>'
         },
         tooltip: {
           pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -54,15 +55,18 @@
             type: 'pie',
             name: 'Browser share',
             data: [
-                <% @question.choices.each do |c| %>
+                <% question.choices.each do |c| %>
                 ['<%=c.choice%>',   <%= c.responses.where(choice_id: c.id).count %> ],
                <%end%>
+               <% end %>
             ]
         }]
     });
 });
 
+
     </script>
+
 
 
 
