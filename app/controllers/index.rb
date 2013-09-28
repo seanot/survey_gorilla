@@ -34,7 +34,8 @@ get '/survey/:id/results' do
 end
 
 get '/profile/:id' do
-  @user = current_user
+  @user = User.find(params[:id])
+  puts @user.authored_surveys
   erb :profile
 end
 
