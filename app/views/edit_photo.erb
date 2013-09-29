@@ -1,6 +1,6 @@
 
 
-<form action="/profile/<%= @user.id %>/edit/<%= @photo.id %>" method="POST" enctype="multipart/form-data">
+<form id="upload_image" action="/profile/<%= @user.id %>/edit/<%= @photo.id %>" method="POST" enctype="multipart/form-data">
   <p><input type="file" name="image" /></p>
   <input type="submit" value="Upload!">
 </form>
