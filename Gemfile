@@ -20,6 +20,10 @@ gem 'bcrypt-ruby'
 
 gem 'shotgun'
 
+gem 'rmagick'
+gem 'mini_magick'
+gem 'carrierwave'
+
 group :test do
   gem 'faker'
   gem 'rspec'

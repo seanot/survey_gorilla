@@ -20,6 +20,11 @@ require 'bcrypt'
 require 'sinatra'
 require "sinatra/reloader" if development?
 
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
+require 'mini_magick'
+require 'rmagick'
+
 require 'erb'
 
 # Some helper constants for path-centric logic
@@ -27,9 +32,14 @@ APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 
 APP_NAME = APP_ROOT.basename.to_s
 
+CarrierWave.configure do |config|
+  config.root = APP_ROOT + 'public/'
+end
+
 # Set up the controllers and helpers
 Dir[APP_ROOT.join('app', 'controllers', '*.rb')].each { |file| require file }
 Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
+Dir[APP_ROOT.join('app', 'uploaders', '*.rb')].each { |file| require file }
 
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
