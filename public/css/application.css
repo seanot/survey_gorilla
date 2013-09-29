@@ -14,6 +14,11 @@ ul {
   list-style-type: none;
 }
 
+.error {
+  color: red;
+  text-align: center;
+}
+
 .create-form form {
   display: block;
   margin-left: auto;
@@ -165,20 +170,36 @@ h2  {
   margin-bottom: 20px;
 }
 
-
-/*#csurvey-button2  {
-  float: right;
-  display: inline;
-  margin-left: none;
-}*/
-#csurvey-button2 {
+#csurvey-button2, #submit-photo, #squestion-button1, #sresponse-button1, #sresponse-button2 {
+  float: left;
   position: relative;
-  right: 60%;
-  float: right;
+  padding:5px;
+  background-color: #8826C9;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  color: white;
+  text-decoration:none;
+  margin-top: 0;
+/*  -webkit-box-shadow: inset 0 0 20px #C683F2;
+  -moz-box-shadow: inset 0 0 20px #C683F2;
+  box-shadow: inset 0 0 0px #C683F2;*/
 } 
 
-#csurvey-button3 {
-  position: absolute;
+#csurvey-button3, #sresponse-button3{  
+  float: right;
+  position: relative;
+  right: 35%;
+  padding:5px;
+  background-color: #8826C9;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  color: white;
+  text-decoration:none;
+  margin-top: 0;
+}
+
+#sresponse-button3{  
+  right: 60%;
 }
 
 #question_results th:nth-child(3) {
@@ -187,5 +208,15 @@ h2  {
 
 #question_results th:nth-child(2) {
   text-align: center;
+}
+
+#question p { 
+  margin-top: 0px;
+  font-size: 120%;
+  margin-bottom: 2%;
+}
+
+#question h2 { 
+  margin-bottom: 0px;
 }
 
