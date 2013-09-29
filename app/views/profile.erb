@@ -26,7 +26,7 @@
   <h3>Your Surveys</h3>
   <div class="created-survey-listing">
     <table>
-    <% @user.authored_surveys.each do |survey| %>
+
       <tr>
         <th>
           Survey Name
@@ -34,6 +34,7 @@
         <th>
           URL
         </th> 
+        <% @user.authored_surveys.each do |survey| %>
       </tr> 
       <tr> 
         <td>
