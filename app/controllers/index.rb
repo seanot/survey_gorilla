@@ -23,6 +23,12 @@ get '/review/:id' do
   erb :review
 end
 
+get '/add_question/:id' do
+  @user = current_user
+  @survey = Survey.find(params[:id])
+  erb :create_add
+end
+
 get '/survey/:id' do
   @survey = Survey.find(params[:id])
   erb :survey
@@ -65,7 +71,7 @@ end
 
 post '/review' do
   @user = current_user
-  @survey = Survey.find_or_create_by_name(params[:survey_name])
+  @survey = Survey.create(name: params[:survey_name])
   @survey.update_attributes(user_id: @user.id)
   @survey.save
   question = Question.create(question: params[:survey_question])
@@ -73,13 +79,24 @@ post '/review' do
   question.choices << Choice.create(choice: params[:survey_choice_2])
   question.choices << Choice.create(choice: params[:survey_choice_3])
   @survey.questions << question
-  puts params[:add]
-  puts params[:submit]
-  if params[:add]
-    erb :create
-  else
-    redirect "/review/#{@survey.id}"
+  
+  redirect "/review/#{@survey.id}"
+end
+
+post '/review_add/:id' do
+  @user = current_user
+  @survey = Survey.find(params[:id])
+  unless @survey.name == params[:survey_name]
+    @survey.update_attributes(name: params[:survey_name])
+    @survey.save
   end
+  question = Question.create(question: params[:survey_question])
+  question.choices << Choice.create(choice: params[:survey_choice_1])
+  question.choices << Choice.create(choice: params[:survey_choice_2])
+  question.choices << Choice.create(choice: params[:survey_choice_3])
+  @survey.questions << question
+
+  redirect "/review/#{@survey.id}"
 end
 
 post '/survey/:survey_id/results' do

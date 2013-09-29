@@ -2,21 +2,24 @@
   <p><%= @error %></p>
 <% end %>
 
-  <h3>Review Your New Survey</h3>
+<h3>Review Your New Survey</h3>
 
-  <div id="question">
-    <h4><%= @survey.name %></h4>
-    <% questions_array = @survey.questions %>
-    
-  <p><% questions_array.each do |question| %>
-    <%= question.question %></p>
- <form action="/survey/:survey_id/results" method="POST">
+<div id="question">
+
+  <h4><%= @survey.name %></h4>
+  <% questions_array = @survey.questions %>
+  <% questions_array.each do |question| %>
+    <p><%= question.question %></p>
       <% question.choices.each do |choice| %>
-        <input type="radio" name="choice_1" value="choice_1"><%= choice.choice %><br>
+        <input type="radio" name="choice_1" value="choice_1"> <%= choice.choice %><br>
       <% end %>
     <%end%>
-    </form>
-  </div>
+  <p>Do you wish to add another question?</p>
+  <form action='/add_question/<%= @survey.id %>' method='GET'>
+    <input type='submit' name='add_question' value='Add another question'>
+  </form>
 
-  <p>Survey URL: <a href="/survey/<%= @survey.id %>">/survey/<%= @survey.id %></a></p>
-  <p><a href="/survey/<%= @survey.id %>"><button>APPROVED</button></a></p>
+</div>
+<p>If you're done adding questions, copy your survey URL and click the 'Finalize' button below.</p>
+<p>Survey URL: <a href="/survey/<%= @survey.id %>">/survey/<%= @survey.id %></a></p>
+<p><a href="/survey/<%= @survey.id %>"><button>Finalize Your Survey!</button></a></p>
