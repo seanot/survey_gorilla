@@ -40,6 +40,12 @@ get '/profile/:id' do
   erb :profile
 end
 
+get '/profile/:id/edit' do
+  @user = User.find(params[:id])
+  @photo = Photo.find_by(user_id: @user.id)
+  erb :edit_photo
+end
+
 
 #=============POST=============
 
@@ -47,6 +53,14 @@ post '/profile/:id/upload' do
   @user = current_user
   @photo = Photo.create(file: params[:image], user_id: @user.id)
   redirect "/profile/#{@user.id}"
+end
+
+post '/profile/:id/edit/:photo_id' do
+  @user = current_user
+  @photo = Photo.find(params[:photo_id])
+  @photo.update_attributes(file: params[:image])
+  redirect "/profile/#{@user.id}"
+
 end
 
 post '/review' do
