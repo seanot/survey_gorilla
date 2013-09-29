@@ -4,7 +4,7 @@ $(document).ready(function() {
         $(this).hide();
 
         $.get($(this).attr("href"), function(form) {
-            $('h1').after(form);
+            $('.photo').after(form);
         })
     })        
 });
