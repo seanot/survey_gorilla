@@ -7,7 +7,7 @@
   <div id="question">
     <h4><%= @survey.name %></h4>
     <% questions_array = @survey.questions %>
-    <%= questions_array.first.question%>
+    
   <p><% questions_array.each do |question| %>
     <%= question.question %></p>
  <form action="/survey/:survey_id/results" method="POST">
