@@ -3,71 +3,24 @@
 <script src="/js/graph.js"></script>
 
 
-
 <div class="question-review">
-  <table>
+  
+  <a id="homepage" href="/">Return to Homepage</a>
+  <p>
   <% @survey.questions.each do |q| %>
-    <tr>
+    <div id="question_results">
+      <% total = 0 %>
+      <table><th><%= q.question %></th>
       <% q.choices.each do |c| %>
-      <td>
-        <%= c.choice %>
-      </td>
-      <td>
-        <%= c.responses.where(choice_id: c.id).count %>
-      <td>
+        <tr>
+          <td><%= c.choice %></td>
+          <td><%= c.responses.where(choice_id: c.id).count %> votes<td>
+          <% total += c.responses.where(choice_id: c.id).count %>
+        </tr>
       <% end %>
-<%@survey.questions.each_with_index do |question,index|%>
-<div id="question-response<%=index%>" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-  <script>
+      <th>Total Votes: <%= total %></th></table><br>
+      <%end%>
+    </div>
+  </p>
 
-  $(function () {
-    $('#question-response'+<%=index%>).highcharts({
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false
-        },
-        title: {
-            text: '<%= question.question %>'
-        },
-        tooltip: {
-          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    color: '#000000',
-                    connectorColor: '#000000',
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-                }
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'Browser share',
-            data: [
-                <% question.choices.each do |c| %>
-                ['<%=c.choice%>',   <%= c.responses.where(choice_id: c.id).count %> ],
-               <%end%>
-
-            ]
-        }]
-    });
-});
-    </script>
-<%end%>
-<%end%>
-</table>
 </div>
-
-
-
-
-
-
-
-
-
