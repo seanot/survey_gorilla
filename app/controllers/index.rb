@@ -43,7 +43,7 @@ end
 get '/profile/:id/edit' do
   @user = User.find(params[:id])
   @photo = Photo.find_by(user_id: @user.id)
-  erb :edit_photo
+  erb :edit_photo , layout: !request.xhr?
 end
 
 
