@@ -16,18 +16,12 @@
         <%= c.responses.where(choice_id: c.id).count %>
       <td>
       <% end %>
-
-      <div id="question-response" style="min-width: 410px; height: 500px; margin: 0 auto"></div>
-      <% end %>
-</table>
-</div>
-
-
-
+<%@survey.questions.each_with_index do |question,index|%>
+<div id="question-response<%=index%>" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
   <script>
-  <% @question = @survey.questions.each |question| %>
+
   $(function () {
-    $('#question-response').highcharts({
+    $('#question-response'+<%=index%>).highcharts({
         chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,
@@ -58,14 +52,18 @@
                 <% question.choices.each do |c| %>
                 ['<%=c.choice%>',   <%= c.responses.where(choice_id: c.id).count %> ],
                <%end%>
-               <% end %>
+
             ]
         }]
     });
 });
-
-
     </script>
+<%end%>
+<%end%>
+</table>
+</div>
+
+
 
 
 
