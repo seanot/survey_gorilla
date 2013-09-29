@@ -1,0 +1,24 @@
+<% if @error %>
+  <p><%= @error %></p>
+<% end %>
+
+<% if !@user %>
+  <p>Please login or create your Monkey SCATT account above.</p>
+<% end %>
+
+<h3>Add Another Question to Your Survey</h3>
+
+<form action="/review_add/<%= @survey.id %>" method="POST">
+  <label>Survey Name:<br>
+    <input tabindex="1" type="text" required name="survey_name" value="<%= @survey.name %>"></input></label><br>
+  <label>Survey Question:<br>
+    <input tabindex="2" type="text" required name="survey_question" placeholder="enter survey question"></input></label><br>
+  <label>Response Choices:</label><br>
+    <input tabindex="3" type="text" required name="survey_choice_1" placeholder="choice 1"></input><br>
+    <input tabindex="4" type="text" required name="survey_choice_2" placeholder="choice 2"></input><br>
+    <input tabindex="5" type="text" required name="survey_choice_3" placeholder="choice 3"></input><br>
+  <% if @user %>
+    <input tabindex="6" type="submit" name="create" value="Add this Question and Review Your Survey"><br>
+  <% end %>
+</form>
+<a href="/"><button>Cancel</button></a>

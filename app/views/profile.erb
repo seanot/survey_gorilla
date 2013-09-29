@@ -16,6 +16,7 @@
 
   <% if @photo %>
     <img class="photo" src="<%= @photo.file %>">
+    <a id="edit_image" href="/profile/<%= @user.id %>/edit">Edit image</a>
   <% end %>
   <br>
   <br>
