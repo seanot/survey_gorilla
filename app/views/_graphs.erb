@@ -41,4 +41,53 @@
     </script>
       <% end %>
 
+<!--All below was originally in the result.erb page, but could not get it formatted to work with multi questions-->
+<table>
+<%@survey.questions.each_with_index do |question,index|%>
+
+<div id="question-response<%=index%>" style="min-width: 310px; height: 400px; margin: 0 auto">
+  <script>
+
+  $(function () {
+    $('#question-response'+<%=index%>).highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: '<%= question.question %>'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            data: [
+                <% question.choices.each do |c| %>
+                ['<%=c.choice%>',   <%= c.responses.where(choice_id: c.id).count %> ],
+               <%end%>
+
+            ]
+        }]
+    });
+});
+    </script>
+<%end%>
+
+</table>
+</div>
 
