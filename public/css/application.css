@@ -181,3 +181,11 @@ h2  {
   position: absolute;
 }
 
+#question_results th:nth-child(3) {
+  text-align: right;
+}
+
+#question_results th:nth-child(2) {
+  text-align: center;
+}
+

@@ -1,24 +1,28 @@
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
-<script src="/js/graph.js"></script>
-
-
 <div class="question-review">
   
   <a id="homepage" href="/">Return to Homepage</a>
   <p>
   <% @survey.questions.each do |q| %>
     <div id="question_results">
-      <% total = 0 %>
-      <table><th><%= q.question %></th>
+      <% vote_count = 0 %>
       <% q.choices.each do |c| %>
-        <tr>
-          <td><%= c.choice %></td>
-          <td><%= c.responses.where(choice_id: c.id).count %> votes<td>
-          <% total += c.responses.where(choice_id: c.id).count %>
-        </tr>
+        <% vote_count += c.responses.where(choice_id: c.id).count %>
       <% end %>
-      <th>Total Votes: <%= total %></th></table><br>
+      <% total = 0 %>
+      <table>
+        <th id="question"><%= q.question %></th>
+        <th>Votes</th>
+        <th id="pct">Pct.</th>
+        <% q.choices.each do |c| %>
+          <tr>
+            <td><%= c.choice %></td>
+            <td><%= c.responses.where(choice_id: c.id).count %> votes<td>
+            <td><%= (c.responses.where(choice_id: c.id).count.to_f / vote_count * 100).round(1) %>%</td>
+          <% total += c.responses.where(choice_id: c.id).count %>
+          </tr>
+        <% end %>
+        <th>Total Votes: <%= total %></th>
+      </table><br>
       <%end%>
     </div>
   </p>
