@@ -6,18 +6,20 @@
   <p class="error">Please login or create your Monkey SCATT account above.</p>
 <% end %>
 
-<h3>Create New Survey</h3>
+<h2>Create New Survey</h2>
+<br>
 
 <form class="create-form" action="/review" method="POST">
-  <label>Survey Name:<br>
-    <input tabindex="1" type="text" required name="survey_name" placeholder="enter survey name"></input></label><br>
-  <label>Survey Question:<br>
+  <label id="survey-name-input-label">Survey Name:
+    <input id="survey-name-input" tabindex="1" type="text" required name="survey_name" placeholder="enter survey name"></input></label><br>
+  <label>Survey Question:
     <input tabindex="2" type="text" required name="survey_question" placeholder="enter survey question"></input></label><br>
   <label>Response Choices:</label><br>
-    <input tabindex="3" type="text" required name="survey_choice_1" placeholder="choice 1"></input><br>
-    <input tabindex="4" type="text" required name="survey_choice_2" placeholder="choice 2"></input><br>
-    <input tabindex="5" type="text" required name="survey_choice_3" placeholder="choice 3"></input><br><br>
-
+  <span class="response-choices">
+    <input id="response-choices" tabindex="3" type="text" required name="survey_choice_1" placeholder="choice 1"></input><br>
+    <input id="response-choices" tabindex="4" type="text" required name="survey_choice_2" placeholder="choice 2"></input><br>
+    <input id="response-choices" tabindex="5" type="text" required name="survey_choice_3" placeholder="choice 3"></input><br><br>
+    </span>
   <% if @user %>
     <input id="csurvey-button2" tabindex="6" type="submit" name="create" value="Add this Question and Review Your Survey">
   <% end %>

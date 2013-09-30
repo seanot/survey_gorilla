@@ -9,18 +9,22 @@
   <h2><%= @survey.name %></h2>
   <% questions_array = @survey.questions %>
   <% questions_array.each do |question| %>
-    <p><%= question.question %></p>
+  <br>  
+    <p id="survey-text"><%= question.question %></p>
       <% question.choices.each do |choice| %>
-        <input type="radio" name="choice_1" value="choice_1"> <%= choice.choice %><br>
+        <input type="radio" name="choice_1" value="choice_1"> <%= choice.choice %> <br>
       <% end %>
     <%end%>
+    <br>
   <p>Do you wish to add another question?</p>
   <form action='/add_question/<%= @survey.id %>' method='GET'>
     <input id="add-question-button1" type='submit' name='add_question' value='Add another question'>
   </form>
-
 </div>
 <br>
-<p>If you're done adding questions, copy your survey URL and click the 'Finalize' button below.</p>
-<p>Survey URL: <a href="/survey/<%= @survey.id %>">/survey/<%= @survey.id %></a></p>
+<br>
+<div class="survey-url">
+<p id="survey-url">If you're done adding questions, copy your survey URL and click the 'Finalize' button below.</p>
+<p id="survey-url">Survey URL: <a href="/survey/<%= @survey.id %>">/survey/<%= @survey.id %></a></p>
+</div>
 <p><a href="/survey/<%= @survey.id %>"><button id="finalize_survey_button">Finalize Your Survey!</button></a></p>

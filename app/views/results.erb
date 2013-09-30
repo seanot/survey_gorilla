@@ -1,7 +1,7 @@
 <div class="question-review">
   
-  <a id="homepage" href="/">Return to Homepage</a>
-  <p>
+<h2>Survey Results</h2>
+  
   <% @survey.questions.each do |q| %>
     <div id="question_results">
       <% vote_count = 0 %>
@@ -9,15 +9,21 @@
         <% vote_count += c.responses.where(choice_id: c.id).count %>
       <% end %>
       <% total = 0 %>
-      <table>
+      <table class="survey-review-table">
         <th id="question"><%= q.question %></th>
         <th>Votes</th>
-        <th id="pct">Pct.</th>
+        <th id="pct">Percent</th>
         <% q.choices.each do |c| %>
           <tr>
-            <td><%= c.choice %></td>
-            <td><%= c.responses.where(choice_id: c.id).count %> votes<td>
-            <td><%= (c.responses.where(choice_id: c.id).count.to_f / vote_count * 100).round(1) %>%</td>
+            <td>
+              <%= c.choice %>
+            </td>
+            <td>
+              <%= c.responses.where(choice_id: c.id).count %> votes
+            </td>
+            <td>
+              <%= (c.responses.where(choice_id: c.id).count.to_f / vote_count * 100).round(1) %>%
+            </td>
           <% total += c.responses.where(choice_id: c.id).count %>
           </tr>
         <% end %>
@@ -25,6 +31,6 @@
       </table><br>
       <%end%>
     </div>
-  </p>
 
+  <a id="homepage" href="/"><button id="survey-return-button">Return to Homepage</button></a>
 </div>
