@@ -19,6 +19,21 @@ ul {
   text-align: center;
 }
 
+#email {
+  color: #8826C9;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+#password {
+  color: #8826C9;
+  display: inline-block;
+}
+
+#password input {
+  margin-left: 30px;
+}
+
 .create-form form {
   display: block;
   margin-left: auto;
@@ -44,9 +59,7 @@ ul {
 .response-choices #response-choices input {
   display: block;
   position: relative;
-  background-color: purple;
   width: 100%;
-
 }
 
 .login,
@@ -165,8 +178,13 @@ h2  {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 10px;
   border-radius: 15px;
   border: 6px solid #8826C9;
+}
+
+#edit-image {
+  text-align: center;
 }
 
 #survey-text p {
@@ -239,7 +257,8 @@ table.survey-review-table th {
   margin-bottom: 20px;
 }
 
-#survey-return-button, #csurvey-button2, #submit-photo, #squestion-button1, 
+#register-user, #survey-return-button, #choose-photo-button, #choose-photo-button2,
+#create-survey-button, #csurvey-button2, #submit-photo, #squestion-button1, 
 #sresponse-button1, #sresponse-button2, 
 #add-question-button1, #finalize_survey_button {
   float: left;
@@ -255,6 +274,18 @@ table.survey-review-table th {
   -moz-box-shadow: inset 0 0 20px #C683F2;
   box-shadow: inset 0 0 0px #C683F2;*/
 } 
+
+#finalize_survey_button {
+  position: relative;
+/*  display: inline-block;*/
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#choose-photo-button2 {
+  line-height: 140%;
+}
 
 #csurvey-button3, #sresponse-button3{  
   float: right;
@@ -290,4 +321,17 @@ table.survey-review-table th {
 #question h2 { 
   margin-bottom: 0px;
 }
+
+.survey-url {
+  border: 6px solid #8826C9;
+  border-radius: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#survey-url {
+  color: #8826C9;
+}  
 
