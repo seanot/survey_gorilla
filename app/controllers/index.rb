@@ -113,7 +113,7 @@ post '/register' do
   if @user.save
     session[:user_id] = @user.id
   end
-  redirect "/"
+  redirect "/profile/#{@user.id}"
 end
 
 post '/login' do
