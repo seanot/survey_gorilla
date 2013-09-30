@@ -19,6 +19,21 @@ ul {
   text-align: center;
 }
 
+#email {
+  color: #8826C9;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+#password {
+  color: #8826C9;
+  display: inline-block;
+}
+
+#password input {
+  margin-left: 30px;
+}
+
 .create-form form {
   display: block;
   margin-left: auto;
@@ -32,17 +47,29 @@ ul {
 }
 
 .create-form label{
-  display: inline-block;
+  display: inline;
+  color: #8826C9;
+  font-weight: bold;
+}
+
+#survey-name-input {
+  margin-left: 25px;
+}
+
+.response-choices #response-choices input {
+  display: block;
+  position: relative;
+  width: 100%;
 }
 
 .login,
-.login #login {
+.login #login   {
   background-color: #8826C9;
   color: white;
   font-size: 75%;
   height: 50px;
   line-height: 50px;
-  text-decoration: none;
+  text-decoration: none;  
 }
 
 .login form {
@@ -53,13 +80,32 @@ ul {
   position: absolute;
   top: 10px;
   left: 75px;
+
+}
+
+#login-button {
+  padding:5px;
+  background-color: #8826C9;
+  border: 2px solid white;
+  border-radius: 8px;
+  color: white;
+  text-decoration:none;
+  margin-top: 0;
 }
 
 .login #register,
 .login #logout {
   position: absolute;
-  top: 15px;
+  top: 10px;
   right: 20px;
+  
+  padding:5px;
+  background-color: #8826C9;
+  border: 2px solid white;
+  border-radius: 8px;
+  color: white;
+  text-decoration:none;
+  margin-top: 0;
 }
 
 .upper {
@@ -91,7 +137,6 @@ ul {
   text-decoration: underline;
 }
 
-
 .button {
   padding:5px;
   background-color: #8826C9;
@@ -100,6 +145,7 @@ ul {
   color: white;
   text-decoration: none;
 }
+
 #smile {
   display: block;
   margin: 0 auto;
@@ -117,8 +163,10 @@ h1, h3  {
 
 h2  {
   color: #8826C9;
+  margin-bottom: 10px;
 }
 
+.question input[type="radio"], 
 .survey-response-form input[type="radio"] {
   color: #8826C9;
   padding: 10px;
@@ -130,8 +178,25 @@ h2  {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 10px;
   border-radius: 15px;
   border: 6px solid #8826C9;
+}
+
+#edit-image {
+  text-align: center;
+}
+
+#survey-text p {
+  color: black;
+}
+
+p {
+  color: #2b2b2b;
+}
+
+.survey-url #survey-url div {
+ background-color: red;
 }
 
 .created-survey-listing table {
@@ -142,7 +207,29 @@ h2  {
   margin-right: auto;
   padding-bottom: 10px;
   text-align: center;
+}
 
+table.survey-review-table {
+  border: 6px solid #8826C9;
+  border-radius: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  text-align: center;
+}
+
+table.survey-review-table th,
+table.survey-review-table td{
+  text-align: left;
+  margin-left: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+table.survey-review-table th {
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 
 .created-survey-listing th, tr{
@@ -170,7 +257,8 @@ h2  {
   margin-bottom: 20px;
 }
 
-#csurvey-button2, #submit-photo, #squestion-button1, 
+#register-user, #survey-return-button, #choose-photo-button, #choose-photo-button2,
+#create-survey-button, #csurvey-button2, #submit-photo, #squestion-button1, 
 #sresponse-button1, #sresponse-button2, 
 #add-question-button1, #finalize_survey_button {
   float: left;
@@ -186,6 +274,18 @@ h2  {
   -moz-box-shadow: inset 0 0 20px #C683F2;
   box-shadow: inset 0 0 0px #C683F2;*/
 } 
+
+#finalize_survey_button {
+  position: relative;
+/*  display: inline-block;*/
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#choose-photo-button2 {
+  line-height: 140%;
+}
 
 #csurvey-button3, #sresponse-button3{  
   float: right;
@@ -221,4 +321,17 @@ h2  {
 #question h2 { 
   margin-bottom: 0px;
 }
+
+.survey-url {
+  border: 6px solid #8826C9;
+  border-radius: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#survey-url {
+  color: #8826C9;
+}  
 

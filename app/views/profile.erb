@@ -9,19 +9,23 @@
     <p>Consider uploading a photograph of yourself...</p>
 
     <form action="/profile/<%= @user.id %>/upload" method="POST" enctype="multipart/form-data">
-      <p><input type="file" name="image" /></p>
-      <input type="submit" value="Upload!">
+      <input id="choose-photo-button" type="file" name="image" />
+      <input id="choose-photo-button" type="submit" value="Upload!">
     </form>
   <% end %>
 
+  <div id="edit-image">
   <% if @photo %>
     <img class="photo" src="<%= @photo.file %>">
-    <a id="edit_image" href="/profile/<%= @user.id %>/edit">Edit image</a>
+    <a href="/profile/<%= @user.id %>/edit">    Edit image
+    </a>
   <% end %>
+</div>
   <br>
   <br>
 
-  <a href="/create"><button name="create">Create A New Survey</button></a>
+  <a href="/create"><button id="create-survey-button" name="create">Create A New Survey</button></a>
+  <br>
 
   <h3>Your Surveys</h3>
   <div class="created-survey-listing">
