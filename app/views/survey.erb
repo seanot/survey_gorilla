@@ -9,8 +9,9 @@
   <div id="question">
     <h2><%= @survey.name %></h2>
     <% questions_array = @survey.questions %>
-  <p><% questions_array.each do |question| %>
-    <%= question.question %></p>
+    <% questions_array.each do |question| %>
+    <br>
+    <p><%= question.question %></p>
     <form class="survey-response-form" action="/survey/<%= @survey.id %>/results" method="POST">
     <% question.choices.each_with_index do |choice,index| %>
       <input type="radio" name="<%=question.id%>" value="<%= choice.id %>"> <%= choice.choice %><br>
@@ -18,8 +19,8 @@
     <%end%>
   </div>
   
-      <p><input type="submit" value="Submit your response">
-      <a href="/"><button>Cancel</button></a></p>
+      <p><input id="sresponse-button2" type="submit" value="Submit your response">
+      <a href="/"><button id="sresponse-button3" >Cancel</button></a></p>
 
     </form>
 
