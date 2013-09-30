@@ -170,7 +170,9 @@ h2  {
   margin-bottom: 20px;
 }
 
-#csurvey-button2, #submit-photo, #squestion-button1, #sresponse-button1, #sresponse-button2 {
+#csurvey-button2, #submit-photo, #squestion-button1, 
+#sresponse-button1, #sresponse-button2, 
+#add-question-button1, #finalize_survey_button {
   float: left;
   position: relative;
   padding:5px;
